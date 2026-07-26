@@ -287,10 +287,10 @@ export default function Home() {
   const isLocal = typeof window !== "undefined" && (ip === "::1" || ip === "127.0.0.1" || window.location.hostname === "localhost") && isDev;
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <section className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-16">
+    <main className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
+      <section className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-4 py-10 sm:px-6 md:px-8 lg:px-10">
         <div className="w-full max-w-4xl overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-2xl">
-          <div className="border-b border-slate-800 px-8 py-8 sm:px-10">
+          <div className="border-b border-slate-800 px-5 py-6 sm:px-8 sm:py-8">
             <div className="flex items-center justify-center gap-3">
               <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 px-4 py-1 text-sm text-slate-300">
                 <span className="text-lg">🌍</span>
@@ -300,11 +300,11 @@ export default function Home() {
 
             <div className="mt-6 flex flex-col items-center">
               {displayIp === "Loading..." || displayIp === "Unable to fetch" ? (
-                <div className="h-28 w-full max-w-2xl animate-pulse rounded-lg bg-slate-800" />
+                <div className="h-24 w-full max-w-2xl animate-pulse rounded-lg bg-slate-800" />
               ) : (
                 <>
-                  <h1 className="mt-2 text-center text-7xl font-extrabold leading-tight break-words">
-                    <span className={`${(ipv6 || "").includes(":") ? "font-mono text-7xl" : ""}`}>{heroValue}</span>
+                  <h1 className="mt-2 text-center text-4xl font-extrabold leading-tight break-words sm:text-5xl md:text-6xl lg:text-7xl">
+                    <span className={`${(ipv6 || "").includes(":") ? "font-mono" : ""} break-words min-w-0 text-inherit`}>{heroValue}</span>
                   </h1>
                   {isLocal && (
                     <p className="mt-2 text-sm text-slate-400">(Local Development)</p>
@@ -312,15 +312,15 @@ export default function Home() {
                 </>
               )}
 
-              <p className="mt-3 text-slate-400 text-center">
+              <p className="mt-3 max-w-2xl text-center text-sm text-slate-400 sm:text-base">
                 A modern, minimal IP & connection inspector.
               </p>
 
-                <div className="mt-6 flex items-center gap-3">
+              <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:justify-center sm:items-center">
                 <button
                   onClick={handleCopy}
                   aria-label="Copy public IP to clipboard"
-                  className="inline-flex items-center gap-3 rounded-lg bg-blue-600 px-4 py-2 font-semibold transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
+                  className="inline-flex w-full justify-center gap-3 rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:w-auto"
                 >
                   <span>{toast.show ? "✓ Copied to clipboard" : "📋 Copy Public IP"}</span>
                 </button>
@@ -328,7 +328,7 @@ export default function Home() {
                 <button
                   onClick={handleRefresh}
                   aria-label="Refresh IP information"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-transparent px-4 py-2 font-medium text-slate-300 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600"
+                  className="inline-flex w-full justify-center gap-2 rounded-lg border border-slate-700 bg-transparent px-4 py-3 text-sm font-medium text-slate-300 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-600 sm:w-auto min-h-[44px]"
                 >
                   Refresh
                 </button>
@@ -336,7 +336,7 @@ export default function Home() {
                 <button
                   onClick={handleShare}
                   aria-label="Share IP information"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-transparent px-4 py-2 font-medium text-slate-300 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600"
+                  className="inline-flex w-full justify-center gap-2 rounded-lg border border-slate-700 bg-transparent px-4 py-3 text-sm font-medium text-slate-300 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-600 sm:w-auto min-h-[44px]"
                 >
                   Share
                 </button>
@@ -346,12 +346,12 @@ export default function Home() {
 
           {/* Toast */}
           {toast.show && (
-            <div role="status" aria-live="polite" className="fixed right-6 top-6 z-50 rounded-md bg-slate-800/90 px-4 py-2 text-sm text-white shadow-lg">
+            <div role="status" aria-live="polite" className="fixed right-4 top-4 z-50 max-w-xs rounded-md bg-slate-800/90 px-4 py-2 text-sm text-white shadow-lg sm:right-6 sm:top-6">
               {toast.message}
             </div>
           )}
 
-          <div className="grid gap-4 p-6 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 p-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:p-6">
             {details.map((d) => {
               const icons: Record<string, string> = {
                 Browser: "🌐",
@@ -371,7 +371,7 @@ export default function Home() {
               };
 
               return (
-                <div key={d.label} className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
+                <div key={d.label} className="min-w-0 rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
                   <p className="text-sm text-slate-400 flex items-center gap-2">
                     <span>{icons[d.label] || "ℹ️"}</span>
                     <span>{d.label}</span>
@@ -384,7 +384,7 @@ export default function Home() {
                       {!showUserAgent ? (
                         <button
                           onClick={() => setShowUserAgent(true)}
-                          className="rounded-md border border-slate-700 bg-transparent px-3 py-1 text-sm text-slate-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600"
+                          className="w-full rounded-md border border-slate-700 bg-transparent px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-600 sm:w-auto"
                           aria-expanded={showUserAgent}
                           aria-controls="user-agent-content"
                         >
@@ -394,7 +394,7 @@ export default function Home() {
                         <div>
                           <button
                             onClick={() => setShowUserAgent(false)}
-                            className="rounded-md border border-slate-700 bg-transparent px-3 py-1 text-sm text-slate-300 mb-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600"
+                            className="w-full rounded-md border border-slate-700 bg-transparent px-3 py-2 text-sm text-slate-300 mb-2 transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-600 sm:w-auto"
                             aria-expanded={showUserAgent}
                             aria-controls="user-agent-content"
                           >
@@ -405,24 +405,24 @@ export default function Home() {
                       )}
                     </div>
                   ) : d.label === "IPv6" ? (
-                    <div className="mt-2 flex items-start gap-2">
-                      <p className="font-mono text-sm font-semibold text-white break-words">{d.value}</p>
+                    <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <p className="min-w-0 font-mono text-sm font-semibold text-white break-words">{d.value}</p>
                       <button
                         onClick={() => copyValue(d.value as string)}
                         aria-label={`Copy IPv6 ${d.value}`}
-                        className="ml-auto rounded-md border border-slate-700 bg-transparent px-2 py-1 text-sm text-slate-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600"
+                        className="rounded-md border border-slate-700 bg-transparent px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-600 sm:ml-4 sm:self-center"
                       >
                         Copy
                       </button>
                     </div>
                   ) : d.label === "IPv4" ? (
-                    <div className="mt-2 flex items-center gap-2">
-                      <p className="mt-0 font-semibold text-white break-words">{d.value}</p>
+                    <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                      <p className="min-w-0 mt-0 font-semibold text-white break-words">{d.value}</p>
                       {d.value && d.value !== "Not Available" && (
                         <button
                           onClick={() => copyValue(d.value as string)}
                           aria-label={`Copy IPv4 ${d.value}`}
-                          className="ml-auto rounded-md border border-slate-700 bg-transparent px-2 py-1 text-sm text-slate-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600"
+                          className="rounded-md border border-slate-700 bg-transparent px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-600 sm:ml-4 sm:self-center"
                         >
                           Copy
                         </button>
@@ -442,11 +442,11 @@ export default function Home() {
             })}
           </div>
 
-          <div className="border-t border-slate-800 px-6 py-4 text-center text-sm text-slate-400">
+          <div className="border-t border-slate-800 px-5 py-4 text-center text-sm text-slate-400 sm:px-6">
             <div>© 2026 AK World</div>
             <div className="mt-1">Fast • Secure • Free</div>
-            <div className="mt-2 text-xs text-slate-500">Location information is approximate and based on your public IP address.</div>
-            <div className="mt-1 text-xs font-semibold text-slate-300">This tool processes your IP address only to display your connection information. No IP addresses are stored by AK World.</div>
+            <div className="mt-2 text-xs leading-snug text-slate-500">Location information is approximate and based on your public IP address.</div>
+            <div className="mt-1 text-xs leading-snug font-semibold text-slate-300">This tool processes your IP address only to display your connection information. No IP addresses are stored by AK World.</div>
           </div>
         </div>
       </section>
