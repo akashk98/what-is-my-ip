@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
         const data = await res.json();
         if (data && data.ip) ip = data.ip;
       }
-    } catch (e) {
+    } catch {
       // ignore network failures and keep loopback
     }
   }

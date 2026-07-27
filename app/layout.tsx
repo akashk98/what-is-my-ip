@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "What Is My IP Address? | Free IP Lookup Tool | ak-world",
-  description:
-    "Find your public IP address instantly. View IPv4, IPv6, ISP, ASN, browser, operating system, device information, timezone, and more with ak-world.",
+  title: "AK World | Free Online Tools",
+  description: "AK World offers free online tools including What Is My IP and Digital Invitation Creator.",
   icons: {
     icon: "/favicon.svg",
   },
