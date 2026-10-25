@@ -4,7 +4,7 @@ import ToolCard from "@/components/ToolCard";
 
 export const metadata: Metadata = {
   title: "AK World | Free Online Tools",
-  description: "AK World offers free online tools including What Is My IP, Digital Invitation, and Find & Copy Files.",
+  description: "AK World offers free online tools including What Is My IP and Find & Copy Files.",
 };
 
 const tools = [
@@ -14,13 +14,6 @@ const tools = [
     title: "What Is My IP",
     description: "Instantly check your public IP address, browser information, and network details.",
     buttonLabel: "Open Tool",
-  },
-  {
-    href: "/invitations",
-    icon: "🎉",
-    title: "Digital Invitation",
-    description: "Create beautiful online invitations for birthdays, weddings, housewarming ceremonies, anniversaries, and more.",
-    buttonLabel: "Create Invitation",
   },
   {
     href: "/find-copy-files",
