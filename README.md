@@ -1,6 +1,6 @@
 # AK World - Online Tools
 
-A collection of browser-based tools built with Next.js, including What Is My IP, Digital Invitation, and Find & Copy Files.
+A collection of browser-based tools built with Next.js, including What Is My IP and Find & Copy Files.
 
 ## Features
 
