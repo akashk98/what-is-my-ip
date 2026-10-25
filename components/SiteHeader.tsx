@@ -3,9 +3,7 @@ import Link from "next/link";
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/ip", label: "What Is My IP" },
-  { href: "/invitations", label: "Digital Invitation" },
   { href: "/find-copy-files", label: "Find & Copy Files" },
-  { href: "/admin", label: "Admin" },
 ];
 
 export default function SiteHeader() {
