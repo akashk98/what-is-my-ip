@@ -4,6 +4,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/ip", label: "What Is My IP" },
   { href: "/invitations", label: "Digital Invitation" },
+  { href: "/find-copy-files", label: "Find & Copy Files" },
   { href: "/admin", label: "Admin" },
 ];
 
@@ -15,7 +16,7 @@ export default function SiteHeader() {
           <div className="rounded-full bg-emerald-500 px-3 py-1 text-sm font-semibold uppercase tracking-[0.24em] text-slate-950">
             AK World
           </div>
-          <div className="text-base font-semibold">Digital Invitation</div>
+          <div className="text-base font-semibold">Online Tools</div>
         </div>
         <nav className="flex flex-wrap items-center gap-3 text-sm">
           {NAV_ITEMS.map((item) => (
